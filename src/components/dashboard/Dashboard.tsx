@@ -14,28 +14,28 @@ const Dashboard = () => {
   const statsCards = [
     {
       title: 'Skills Mastered',
-      value: '6',
+      value: '8',
       change: '+2 this week',
       icon: TrendingUp,
       color: 'text-skill-coding'
     },
     {
       title: 'Hours Logged',
-      value: '24',
-      change: '8 hrs/day avg',
+      value: '32',
+      change: '10 hrs/day avg',
       icon: Clock,
       color: 'text-skill-electronics'
     },
     {
       title: 'Achievements',
-      value: '6',
-      change: '2 Epic unlocked',
+      value: '8',
+      change: '3 Epic unlocked',
       icon: Trophy,
       color: 'text-skill-aero'
     },
     {
       title: 'Team Projects',
-      value: '4',
+      value: '6',
       change: '100% completion',
       icon: Users,
       color: 'text-skill-leadership'
@@ -55,13 +55,13 @@ const Dashboard = () => {
           <div className="px-8 py-6">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl font-bold text-foreground">Welcome back, Monica!</h1>
+                <h1 className="text-3xl font-bold text-foreground">Welcome back, Nabojyoti!</h1>
                 <p className="text-muted-foreground mt-1">
                   Track your incredible STEM journey at Royal MakerCamp
                 </p>
               </div>
-              <Badge variant="outline" className="text-sm bg-skill-coding/10 text-skill-coding border-skill-coding">
-                Day 3 Complete ✨
+              <Badge variant="outline" className="text-sm bg-primary/10 text-primary border-primary hover:bg-primary/20 transition-colors">
+                Level 7 Master ✨
               </Badge>
             </div>
           </div>
@@ -74,15 +74,15 @@ const Dashboard = () => {
             {statsCards.map((stat, index) => {
               const Icon = stat.icon;
               return (
-                <Card key={index} className="dashboard-theme bg-card border-border hover:shadow-elevated transition-all duration-300">
+                <Card key={index} className="dashboard-theme bg-card border-border hover:shadow-hover hover:scale-105 transition-all duration-300 group cursor-pointer">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm font-medium text-muted-foreground">{stat.title}</p>
-                        <p className="text-3xl font-bold text-card-foreground">{stat.value}</p>
+                        <p className="text-3xl font-bold text-card-foreground group-hover:text-primary transition-colors">{stat.value}</p>
                         <p className="text-sm text-muted-foreground mt-1">{stat.change}</p>
                       </div>
-                      <Icon className={`h-8 w-8 ${stat.color}`} />
+                      <Icon className={`h-8 w-8 ${stat.color} group-hover:scale-110 transition-transform`} />
                     </div>
                   </CardContent>
                 </Card>
@@ -103,17 +103,17 @@ const Dashboard = () => {
           </div>
 
           {/* Footer Section */}
-          <div className="mt-8 p-6 rounded-lg bg-gradient-primary">
+          <div className="mt-8 p-6 rounded-lg bg-gradient-neon hover:shadow-neon transition-all duration-500">
             <div className="text-center">
               <h3 className="text-xl font-bold text-primary-foreground mb-2">
-                🎉 Congratulations on Completing Royal MakerCamp!
+                🎉 Congratulations on Mastering Royal MakerCamp!
               </h3>
               <p className="text-primary-foreground/90 mb-4">
-                You've mastered robotics, electronics, coding, and aeromodelling. Keep building the future!
+                You've conquered robotics, AI, analytics, coding, and beyond. The future is yours to build!
               </p>
               <div className="flex items-center justify-center gap-6 text-primary-foreground/80">
                 <div className="text-center">
-                  <div className="text-2xl font-bold">33</div>
+                  <div className="text-2xl font-bold">35,000</div>
                   <div className="text-sm">Fellow Innovators</div>
                 </div>
                 <div className="text-center">

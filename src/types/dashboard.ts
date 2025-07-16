@@ -2,7 +2,7 @@ export interface SkillData {
   skill: string;
   currentLevel: number;
   targetLevel: number;
-  category: 'robotics' | 'electronics' | 'coding' | 'aeromodelling' | 'leadership' | 'problemSolving';
+  category: 'robotics' | 'electronics' | 'coding' | 'aeromodelling' | 'leadership' | 'problemSolving' | 'ai' | 'analytics';
   projects: string[];
   timeSpent: number; // in hours
   improvement: number; // percentage

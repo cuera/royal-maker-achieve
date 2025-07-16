@@ -69,18 +69,25 @@ export default {
 					coding: 'hsl(var(--skill-coding))',
 					aero: 'hsl(var(--skill-aero))',
 					leadership: 'hsl(var(--skill-leadership))',
-					problem: 'hsl(var(--skill-problem))'
+					problem: 'hsl(var(--skill-problem))',
+					ai: 'hsl(var(--skill-ai))',
+					analytics: 'hsl(var(--skill-analytics))'
 				}
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-secondary': 'var(--gradient-secondary)',
+				'gradient-accent': 'var(--gradient-accent)',
 				'gradient-dashboard': 'var(--gradient-dashboard)',
-				'gradient-skill': 'var(--gradient-skill)'
+				'gradient-skill': 'var(--gradient-skill)',
+				'gradient-neon': 'var(--gradient-neon)'
 			},
 			boxShadow: {
 				'card': 'var(--shadow-card)',
 				'elevated': 'var(--shadow-elevated)',
-				'glow': 'var(--shadow-glow)'
+				'glow': 'var(--shadow-glow)',
+				'neon': 'var(--shadow-neon)',
+				'hover': 'var(--shadow-hover)'
 			},
 			transitionTimingFunction: {
 				'smooth': 'var(--transition-smooth)',

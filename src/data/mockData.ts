@@ -54,6 +54,24 @@ export const skillsData: SkillData[] = [
     projects: ['Debug Sessions', 'Creative Solutions'],
     timeSpent: 9,
     improvement: 15
+  },
+  {
+    skill: 'AI & Machine Learning',
+    currentLevel: 75,
+    targetLevel: 90,
+    category: 'ai',
+    projects: ['Smart Bot Training', 'Pattern Recognition'],
+    timeSpent: 6,
+    improvement: 40
+  },
+  {
+    skill: 'Data Analytics',
+    currentLevel: 68,
+    targetLevel: 85,
+    category: 'analytics',
+    projects: ['Performance Metrics', 'Behavior Analysis'],
+    timeSpent: 5,
+    improvement: 35
   }
 ];
 
@@ -184,23 +202,23 @@ export const achievements: Achievement[] = [
 ];
 
 export const userProfile: UserProfile = {
-  name: 'Monica Austin',
+  name: 'Nabojyoti',
   avatar: '/lovable-uploads/536d3df2-484e-41cb-a5e5-5f08fc096bb9.png',
   role: 'STEM Innovator',
-  teamLead: 'Alex Cooper',
-  skills: ['Robotics', 'Electronics', 'Programming', 'Leadership'],
-  totalHours: 24,
-  projects: 6,
-  level: 3,
-  currentPoints: 2300,
-  nextLevelRequirement: 3000
+  teamLead: 'Arup Kr. Mukhopadhyay',
+  skills: ['Robotics', 'Electronics', 'Programming', 'AI', 'Analytics', 'Leadership'],
+  totalHours: 32,
+  projects: 8,
+  level: 7,
+  currentPoints: 4200,
+  nextLevelRequirement: 5000
 };
 
 export const feedbackData: FeedbackData[] = [
   {
     id: '1',
-    name: 'Alex Cooper',
-    role: 'Team Lead',
+    name: 'Arup Kr. Mukhopadhyay',
+    role: 'Senior Mentor',
     avatar: '/lovable-uploads/536d3df2-484e-41cb-a5e5-5f08fc096bb9.png',
     feedback: 'Exceptional problem-solving skills and great teamwork throughout the program',
     date: 'July 10, 2025',
@@ -208,21 +226,30 @@ export const feedbackData: FeedbackData[] = [
   },
   {
     id: '2',
-    name: 'Dr. Sarah Johnson',
-    role: 'Robotics Instructor',
+    name: 'Dr. Priya Sharma',
+    role: 'AI & Robotics Lead',
     avatar: '/lovable-uploads/536d3df2-484e-41cb-a5e5-5f08fc096bb9.png',
-    feedback: 'Outstanding technical understanding and creative approach to challenges',
+    feedback: 'Outstanding technical understanding and creative approach to AI challenges',
     date: 'July 10, 2025',
     rating: 5
   },
   {
     id: '3',
-    name: 'Prof. Mike Chen',
-    role: 'Electronics Mentor',
+    name: 'Prof. Rajesh Gupta',
+    role: 'Electronics & Analytics Mentor',
     avatar: '/lovable-uploads/536d3df2-484e-41cb-a5e5-5f08fc096bb9.png',
-    feedback: 'Impressive circuit design skills and attention to detail',
+    feedback: 'Impressive circuit design skills and exceptional data analysis capabilities',
     date: 'July 9, 2025',
     rating: 4
+  },
+  {
+    id: '4',
+    name: 'Ms. Kavita Patel',
+    role: 'Coding Instructor',
+    avatar: '/lovable-uploads/536d3df2-484e-41cb-a5e5-5f08fc096bb9.png',
+    feedback: 'Brilliant coding logic and innovative approach to programming challenges',
+    date: 'July 8, 2025',
+    rating: 5
   }
 ];
 
@@ -232,5 +259,7 @@ export const skillCategories = {
   coding: { color: '#10b981', icon: '💻', name: 'Coding' },
   aeromodelling: { color: '#ef4444', icon: '🚀', name: 'Aeromodelling' },
   leadership: { color: '#8b5cf6', icon: '👥', name: 'Leadership' },
-  problemSolving: { color: '#f97316', icon: '🧠', name: 'Problem Solving' }
+  problemSolving: { color: '#f97316', icon: '🧠', name: 'Problem Solving' },
+  ai: { color: '#c084fc', icon: '🧠', name: 'AI & ML' },
+  analytics: { color: '#38bdf8', icon: '📊', name: 'Analytics' }
 };
