@@ -107,6 +107,12 @@ const FeedbackSection = () => {
             </div>
           </div>
         </div>
+
+        <div className="mt-6 p-4 rounded-lg bg-muted/30 border border-border">
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            <strong>Royal Skill Matrix dashboard</strong> is a powerful tool designed to help you optimize your learning journey. It provides a comprehensive and interactive overview of your skill development, enabling you to track progress, identify strengths, and pinpoint areas for improvement. With more data this will improve.
+          </p>
+        </div>
       </CardContent>
     </Card>
   );

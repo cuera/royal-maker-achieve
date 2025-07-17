@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DashboardSidebar from './DashboardSidebar';
 import SkillsRadarChart from './SkillsRadarChart';
 import ActivityTimeline from './ActivityTimeline';
 import AchievementShowcase from './AchievementShowcase';
 import FeedbackSection from './FeedbackSection';
+import CertificateComponent from './CertificateComponent';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { TrendingUp, Clock, Trophy, Users } from 'lucide-react';
@@ -11,42 +12,81 @@ import { TrendingUp, Clock, Trophy, Users } from 'lucide-react';
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState('overview');
 
-  const statsCards = [
+  const names = [
+    'Aarjav Garg', 'Aarohi Jain', 'Abeer Agarwalla', 'Aizah Khan', 'Aksish Das',
+    'Amaya Bajaj', 'Anshika Singh', 'Arnesh Dutta', 'Ayaansh Lahoty', 'Bhavya Agarwal',
+    'Bhumi Goel', 'Darsh Agarwal', 'Darsh Neil', 'Dhritiman Borah', 'Eshaan Agarwalla',
+    'Ishaan Daga', 'Manvi Agarwal', 'Mayank Das', 'Mihika Das', 'Navya Agarwal',
+    'Prangan Bhuyan', 'Rhutvik Kalita', 'Ritisha Mayra Rajbongshi', 'Rivaan Amlan Sarma',
+    'Saksham Agarwal', 'Sanvi Bansal', 'Tanmay Sapin Gopi', 'Tejas Sapin Gopi', 'Vaani Saboo',
+    'Vaibhav Singhal', 'Vani Baid', 'Vanya Goenka', 'Vriddhi Goel', 'Hitanshi Bajaj'
+  ];
+
+  // Icons & colours stay constant, values change
+  const cardMeta = [
+    { title: 'Skills Mastered', icon: TrendingUp, color: 'text-skill-coding' },
+    { title: 'Hours Logged',   icon: Clock,      color: 'text-skill-electronics' },
+    { title: 'Achievements',   icon: Trophy,     color: 'text-skill-aero' },
+    { title: 'Team Projects',  icon: Users,      color: 'text-skill-leadership' }
+  ];
+
+  const randomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+  const generateStats = () => [
     {
-      title: 'Skills Mastered',
-      value: '8',
-      change: '+2 this week',
-      icon: TrendingUp,
-      color: 'text-skill-coding'
+      ...cardMeta[0],
+      value: randomInt(5, 15).toString(),
+      change: `+${randomInt(1, 3)} this week`
     },
     {
-      title: 'Hours Logged',
-      value: '32',
-      change: '10 hrs/day avg',
-      icon: Clock,
-      color: 'text-skill-electronics'
+      ...cardMeta[1],
+      value: randomInt(20, 60).toString(),
+      change: `${randomInt(6, 12)} hrs/day avg`
     },
     {
-      title: 'Achievements',
-      value: '8',
-      change: '3 Epic unlocked',
-      icon: Trophy,
-      color: 'text-skill-aero'
+      ...cardMeta[2],
+      value: randomInt(4, 12).toString(),
+      change: `${randomInt(1, 5)} Epic unlocked`
     },
     {
-      title: 'Team Projects',
-      value: '6',
-      change: '100% completion',
-      icon: Users,
-      color: 'text-skill-leadership'
+      ...cardMeta[3],
+      value: randomInt(3, 10).toString(),
+      change: `${randomInt(90, 100)}% completion`
     }
   ];
+
+  const generateProfileStats = () => ({
+    totalHours: randomInt(20, 60),
+    projects: randomInt(5, 15)
+  });
+
+  const [profileStats, setProfileStats] = useState(generateProfileStats());
+
+  const [currentName, setCurrentName] = useState<string>(names[0]);
+  const [statsCards, setStatsCards] = useState(generateStats());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // rotate name
+      setCurrentName(prev => {
+        const nextIndex = (names.indexOf(prev) + 1) % names.length;
+        return names[nextIndex];
+      });
+      // regenerate stats
+      setStatsCards(generateStats());
+      setProfileStats(generateProfileStats());
+    }, 5000); // update every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="dashboard-theme min-h-screen bg-background flex">
       <DashboardSidebar 
         activeSection={activeSection} 
         onSectionChange={setActiveSection} 
+        currentName={currentName}
+        profileStats={profileStats}
       />
       
       <div className="flex-1 overflow-auto">
@@ -55,7 +95,7 @@ const Dashboard = () => {
           <div className="px-8 py-6">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl font-bold text-foreground">Welcome back, Nabojyoti!</h1>
+                <h1 className="text-3xl font-bold text-foreground">Welcome back, {currentName}!</h1>
                 <p className="text-muted-foreground mt-1">
                   Track your incredible STEM journey at Royal MakerCamp
                 </p>
@@ -92,12 +132,12 @@ const Dashboard = () => {
 
           {/* Main Dashboard Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-            <SkillsRadarChart />
+            <SkillsRadarChart currentName={currentName} />
             <ActivityTimeline />
           </div>
 
           {/* Secondary Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <AchievementShowcase />
             <FeedbackSection />
           </div>

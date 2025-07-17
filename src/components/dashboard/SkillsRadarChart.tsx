@@ -2,8 +2,13 @@ import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, Responsi
 import { skillsData, skillCategories } from '@/data/mockData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import CertificateComponent from './CertificateComponent';
 
-const SkillsRadarChart = () => {
+interface SkillsRadarChartProps {
+  currentName: string;
+}
+
+const SkillsRadarChart = ({ currentName }: SkillsRadarChartProps) => {
   const chartData = skillsData.map(skill => ({
     skill: skillCategories[skill.category]?.name || skill.skill,
     current: skill.currentLevel,
@@ -123,6 +128,12 @@ const SkillsRadarChart = () => {
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-6 flex justify-center">
+          <CertificateComponent
+            recipientName={currentName}
+          />
         </div>
       </CardContent>
     </Card>

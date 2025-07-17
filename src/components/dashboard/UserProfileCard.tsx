@@ -2,27 +2,39 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { userProfile } from '@/data/mockData';
+import { userProfile as defaultProfile } from '@/data/mockData';
 import { Clock, BookOpen, Users, TrendingUp } from 'lucide-react';
 
-const UserProfileCard = () => {
-  const progressToNextLevel = (userProfile.currentPoints / userProfile.nextLevelRequirement) * 100;
+interface UserProfileCardProps {
+  name?: string;
+  totalHours?: number;
+  projects?: number;
+}
+
+const UserProfileCard = ({ name, totalHours, projects }: UserProfileCardProps) => {
+  const profile = {
+    ...defaultProfile,
+    name: name ?? defaultProfile.name,
+    totalHours: totalHours ?? defaultProfile.totalHours,
+    projects: projects ?? defaultProfile.projects
+  };
+  const progressToNextLevel = (profile.currentPoints / profile.nextLevelRequirement) * 100;
 
   return (
     <Card className="dashboard-theme bg-card border-border">
       <CardContent className="p-6">
         <div className="flex items-center gap-4 mb-6">
           <Avatar className="w-16 h-16 ring-2 ring-primary">
-            <AvatarImage src={userProfile.avatar} alt={userProfile.name} />
+            <AvatarImage src={profile.avatar} alt={profile.name} />
             <AvatarFallback className="text-lg font-semibold bg-primary text-primary-foreground">
-              {userProfile.name.split(' ').map(n => n[0]).join('')}
+              {profile.name.split(' ').map(n => n[0]).join('')}
             </AvatarFallback>
           </Avatar>
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-card-foreground">{userProfile.name}</h3>
-            <p className="text-sm text-muted-foreground">{userProfile.role}</p>
+            <h3 className="text-xl font-bold text-card-foreground">{profile.name}</h3>
+            <p className="text-sm text-muted-foreground">{profile.role}</p>
             <Badge variant="outline" className="mt-1 text-xs">
-              Level {userProfile.level}
+              Level {profile.level}
             </Badge>
           </div>
         </div>
@@ -30,9 +42,9 @@ const UserProfileCard = () => {
         <div className="space-y-4">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-card-foreground">Progress to Level {userProfile.level + 1}</span>
+              <span className="text-sm font-medium text-card-foreground">Progress to Level {profile.level + 1}</span>
               <span className="text-xs text-muted-foreground">
-                {userProfile.currentPoints} / {userProfile.nextLevelRequirement} XP
+                {profile.currentPoints} / {profile.nextLevelRequirement} XP
               </span>
             </div>
             <Progress value={progressToNextLevel} className="h-3" />
@@ -42,14 +54,14 @@ const UserProfileCard = () => {
             <div className="flex items-center gap-2 p-3 rounded-lg bg-muted/30">
               <Clock className="w-4 h-4 text-primary" />
               <div>
-                <div className="text-lg font-semibold text-card-foreground">{userProfile.totalHours}</div>
+                <div className="text-lg font-semibold text-card-foreground">{profile.totalHours}</div>
                 <div className="text-xs text-muted-foreground">Hours</div>
               </div>
             </div>
             <div className="flex items-center gap-2 p-3 rounded-lg bg-muted/30">
               <BookOpen className="w-4 h-4 text-accent" />
               <div>
-                <div className="text-lg font-semibold text-card-foreground">{userProfile.projects}</div>
+                <div className="text-lg font-semibold text-card-foreground">{profile.projects}</div>
                 <div className="text-xs text-muted-foreground">Projects</div>
               </div>
             </div>
@@ -66,7 +78,7 @@ const UserProfileCard = () => {
                 <AvatarFallback className="text-xs">AC</AvatarFallback>
               </Avatar>
               <div>
-                <div className="font-medium text-sm text-card-foreground">{userProfile.teamLead}</div>
+                <div className="font-medium text-sm text-card-foreground">{profile.teamLead}</div>
                 <div className="text-xs text-muted-foreground">Senior Mentor</div>
               </div>
             </div>
@@ -78,7 +90,7 @@ const UserProfileCard = () => {
               <span className="text-sm font-medium text-card-foreground">Core Skills</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {userProfile.skills.map((skill, index) => (
+              {profile.skills.map((skill, index) => (
                 <Badge key={index} variant="secondary" className="text-xs">
                   {skill}
                 </Badge>

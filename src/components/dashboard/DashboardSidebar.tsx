@@ -19,6 +19,11 @@ import UserProfileCard from './UserProfileCard';
 interface DashboardSidebarProps {
   activeSection: string;
   onSectionChange: (section: string) => void;
+  currentName: string;
+  profileStats: {
+    totalHours: number;
+    projects: number;
+  };
 }
 
 const navigation = [
@@ -30,7 +35,7 @@ const navigation = [
   { id: 'resources', name: 'Resources', icon: BookOpen },
 ];
 
-const DashboardSidebar = ({ activeSection, onSectionChange }: DashboardSidebarProps) => {
+const DashboardSidebar = ({ activeSection, onSectionChange, currentName, profileStats }: DashboardSidebarProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
@@ -76,7 +81,11 @@ const DashboardSidebar = ({ activeSection, onSectionChange }: DashboardSidebarPr
         {/* User Profile */}
         {!isCollapsed && (
           <div className="px-4 mb-4">
-            <UserProfileCard />
+            <UserProfileCard 
+              name={currentName}
+              totalHours={profileStats.totalHours}
+              projects={profileStats.projects}
+            />
           </div>
         )}
 

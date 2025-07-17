@@ -42,35 +42,37 @@ const AchievementShowcase = () => {
         </div>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {achievements.map((achievement) => (
             <div
               key={achievement.id}
-              className={`p-4 rounded-lg border-2 transition-all duration-300 hover:scale-105 hover:shadow-glow ${getRarityColor(achievement.rarity)} overflow-hidden`}
+              className={`p-3 rounded-lg border-2 transition-all duration-300 hover:scale-105 hover:shadow-glow ${getRarityColor(achievement.rarity)} overflow-hidden`}
             >
-              <div className="flex items-start gap-3 h-full">
-                <div className="text-3xl flex-shrink-0">{achievement.icon}</div>
-                <div className="flex-1 min-w-0 space-y-2">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h4 className="font-semibold text-card-foreground truncate">{achievement.title}</h4>
-                    <Badge variant="outline" className={`text-xs flex-shrink-0 ${getRarityColor(achievement.rarity)}`}>
-                      {getRarityIcon(achievement.rarity)}
-                      {achievement.rarity}
+              <div className="flex items-start gap-2 h-full">
+                <div className="text-2xl flex-shrink-0 mt-0.5">{achievement.icon}</div>
+                <div className="flex-1 min-w-0 space-y-1.5">
+                  <div className="flex items-start gap-1.5 flex-wrap">
+                    <h4 className="font-semibold text-sm text-card-foreground leading-tight line-clamp-1">{achievement.title}</h4>
+                    <Badge variant="outline" className={`text-xs flex-shrink-0 px-1.5 py-0.5 ${getRarityColor(achievement.rarity)}`}>
+                      <span className="flex items-center gap-1">
+                        {getRarityIcon(achievement.rarity)}
+                        <span className="text-xs">{achievement.rarity}</span>
+                      </span>
                     </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
+                  <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
                     {achievement.description}
                   </p>
-                  <div className="flex items-center justify-between gap-2">
-                    <Badge variant="secondary" className="text-xs flex-shrink-0">
+                  <div className="flex items-center justify-between gap-2 pt-1">
+                    <Badge variant="secondary" className="text-xs flex-shrink-0 px-2 py-0.5">
                       {achievement.category}
                     </Badge>
                     <div className="flex items-center gap-1 text-xs text-muted-foreground flex-shrink-0">
                       <Trophy className="w-3 h-3" />
-                      {achievement.points} XP
+                      <span className="font-medium">{achievement.points} XP</span>
                     </div>
                   </div>
-                  <div className="text-xs text-muted-foreground">
+                  <div className="text-xs text-muted-foreground opacity-80">
                     Earned: {new Date(achievement.earnedDate).toLocaleDateString()}
                   </div>
                 </div>
