@@ -4,6 +4,7 @@ import SkillsRadarChart from './SkillsRadarChart';
 import ActivityTimeline from './ActivityTimeline';
 import AchievementShowcase from './AchievementShowcase';
 import FeedbackSection from './FeedbackSection';
+import Section9Contact from '@/components/contact/Section9Contact';
 import CertificateComponent from './CertificateComponent';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -166,6 +167,10 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="mt-8">
+            <Section9Contact />
           </div>
         </div>
       </div>
